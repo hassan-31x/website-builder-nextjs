@@ -23,8 +23,8 @@ type EditorElement = {
 }
 
 type Editor = {
-    liveMode: boolean
     elements: EditorElement[]
+    liveMode: boolean
     selectedElement: EditorElement
     device: DeviceTypes
     previewMode: boolean
@@ -32,8 +32,8 @@ type Editor = {
 }
 
 type HistoryState = {
-    History: EditorElement[]
-    index: number
+    history: Editor[]
+    currentIndex: number
 }
 
 type EditorState = {
