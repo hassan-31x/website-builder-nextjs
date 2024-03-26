@@ -69,6 +69,18 @@ const updateAnElement = (editorArray: EditorElement[], action: any): EditorEleme
     })
 }
 
+const deleteAnElement = (editorArray: EditorElement[], action: any): EditorElement[] => {
+    return editorArray.filter((item) => {
+        if(item.id === action.payload.elementDetails.id) {
+            return false
+        } else if(item.content && Array.isArray(item.content)) {
+            item.content = deleteAnElement(item.content, action)
+        }
+        return true
+    })
+
+}
+
 export const builderSlice = createSlice({
     name: "builder",
     initialState,
@@ -115,7 +127,26 @@ export const builderSlice = createSlice({
             state.editor = updatedEditorState
             state.history.history = updatedHistory
             state.history.currentIndex = updatedHistory.length - 1
-        }
+        },
+
+        deleteElement: (state, action) => {
+            const updatedElementsAfterDelete = deleteAnElement(state.editor.elements, action)
+
+            const updatedEditorState = {
+                ...state.editor,
+                elements: updatedElementsAfterDelete,
+            }
+
+            const updatedHistory = [
+                ...state.history.history.slice(0, state.history.currentIndex + 1),
+                { ...updatedEditorState }
+            ]
+
+            state.editor = updatedEditorState
+            state.history.history = updatedHistory
+            state.history.currentIndex = updatedHistory.length - 1
+        },
+
     }
 })
 
