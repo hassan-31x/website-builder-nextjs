@@ -144,12 +144,64 @@ export const builderSlice = createSlice({
 
             state.editor = updatedEditorState
             state.history.history = updatedHistory
-            state.history.currentIndex = updatedHistory.length - 1
+            state.history.currentIndex += 1
         },
 
+        changeClickedElement(state, action) {
+            state.editor.selectedElement = action.payload.elementDetails || {
+                id: '',
+                content: [],
+                name: '',
+                styles: {},
+                type: null,
+            }
+            //* uncomment if want to save clickedElement updates also
+            // state.history.history = [ 
+            //     ...state.history.history.slice(0, state.history.currentIndex + 1),
+            //     { ...state.editor }
+            // ]
+            // state.history.currentIndex += 1
+        },
+
+        changeDevice(state, action) {
+            state.editor.device = action.payload.device
+        },
+
+        togglePreviewMode(state) {
+            state.editor.previewMode = !state.editor.previewMode
+        },
+
+        toggleLiveMode(state, action) {
+            state.editor.liveMode = action.payload ? action.payload.value : !state.editor.liveMode
+        },
+
+        redo(state) {
+            if(state.history.currentIndex < state.history.history.length-1) {
+                const nextIndex = state.history.currentIndex + 1   
+                const nextEditorState = { ...state.history.history[nextIndex] }
+                
+                state.editor = nextEditorState
+                state.history.currentIndex = nextIndex
+            }
+        },
+
+        undo(state) {
+            if(state.history.currentIndex > 0) {
+                const prevIndex = state.history.currentIndex - 1
+                const prevEditorState = { ...state.history.history[prevIndex] }
+
+                state.editor = prevEditorState
+                state.history.currentIndex = prevIndex
+            }
+        },
+
+        loadData (state, action) {
+            state.editor.elements = action.payload.elements || initialEditorState.elements
+            state.editor.liveMode = !!action.payload.withLive
+        }
     }
 })
 
-export const {  } = builderSlice.actions
+export const { addElement, updateElement, deleteElement, changeClickedElement, changeDevice, togglePreviewMode, toggleLiveMode, redo, undo, loadData } = builderSlice.actions
 
 export default builderSlice.reducer
