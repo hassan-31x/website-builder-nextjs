@@ -19,7 +19,7 @@ import buliderReducer from "./slice/builderSlice";
 // import brandReducer from "./slice/brandSlice";
 
 const reducers = combineReducers({
-  cart: persistReducer(
+  builder: persistReducer(
     {
       key: "root",
       storage,

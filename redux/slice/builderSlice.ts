@@ -1,6 +1,6 @@
 "use client"
 
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialEditorState: Editor = {
     elements: [
@@ -171,8 +171,8 @@ export const builderSlice = createSlice({
             state.editor.previewMode = !state.editor.previewMode
         },
 
-        toggleLiveMode(state, action) {
-            state.editor.liveMode = action.payload ? action.payload.value : !state.editor.liveMode
+        toggleLiveMode(state, action?: PayloadAction<{ value: boolean }>) {
+            state.editor.liveMode = action?.payload ? action.payload.value : !state.editor.liveMode
         },
 
         redo(state) {
