@@ -26,6 +26,7 @@ const EditorSidebar = (props: Props) => {
         <SheetContent
           // showX={false}
           side="right"
+          allowClose={false}
           className={clsx(
             'mt-[97px] w-16 z-[80] shadow-none  p-0 focus:border-none transition-all overflow-hidden',
             { hidden: state.editor.previewMode }
@@ -41,7 +42,7 @@ const EditorSidebar = (props: Props) => {
             { hidden: state.editor.previewMode }
           )}
         >
-          <div className="grid gap-4 h-full pb-36 overflow-scroll">
+          <div className="grid gap-4 h-full pb-36 overflow-scroll no-scrollbar">
             <TabsContent value="Settings">
               <SheetHeader className="text-left p-6">
                 <SheetTitle>Styles</SheetTitle>
