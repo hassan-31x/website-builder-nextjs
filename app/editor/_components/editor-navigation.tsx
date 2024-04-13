@@ -113,7 +113,7 @@ const EditorNavigation = (props: Props) => {
             defaultValue="Desktop"
             className="w-fit "
             value={state.editor.device}
-            onValueChange={(value: DeviceTypes) => {
+            onValueChange={(value: string) => {
               dispatch(changeDevice({ device: value }))
             }}
           >

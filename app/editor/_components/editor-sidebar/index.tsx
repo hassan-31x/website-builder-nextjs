@@ -7,6 +7,7 @@ import { clsx } from "clsx"
 import { useDispatch, useSelector } from "react-redux"
 import TabsList from "./tabs"
 import SettingsTab from "./tabs/settings-tab"
+import ComponentsTab from "./tabs/_components"
 
 type Props = {}
 
@@ -63,7 +64,7 @@ const EditorSidebar = (props: Props) => {
                   You can drag and drop components on the canvas
                 </SheetDescription>
               </SheetHeader>
-              {/* <ComponentsTab /> */}
+              <ComponentsTab />
             </TabsContent>
           </div>
         </SheetContent>

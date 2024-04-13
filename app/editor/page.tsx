@@ -10,7 +10,7 @@ const EditorPage = (props: Props) => {
       <EditorNavigation />
 
       <div className='h-full flex justify-center'>
-        <Editor />
+        <Editor liveMode={false} />
       </div>
 
       <EditorSidebar />
