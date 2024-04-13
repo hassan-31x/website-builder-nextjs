@@ -627,16 +627,26 @@ const SettingsTab = (props: Props) => {
       >
         <AccordionTrigger className="!no-underline">Custom</AccordionTrigger>
         <AccordionContent>
-          {state.editor.selectedElement.type === 'link' &&
-            !Array.isArray(state.editor.selectedElement.content) && (
+            {!Array.isArray(state.editor.selectedElement.content) && (
+              <div>
               <div className="flex flex-col gap-2">
-                <p className="text-muted-foreground">Link Path</p>
+                <p className="text-muted-foreground">CSS Property</p>
                 <Input
                   id="href"
-                  placeholder="https:domain.example.com/pathname"
+                  placeholder="color"
                   onChange={handleChangeCustomValues}
-                  value={state.editor.selectedElement.content.href}
+                  // value={state.editor.selectedElement.content.href}
                 />
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-muted-foreground">Value</p>
+                <Input
+                  id="href"
+                  placeholder="red"
+                  onChange={handleChangeCustomValues}
+                  // value={state.editor.selectedElement.content.href}
+                />
+              </div>
               </div>
             )}
         </AccordionContent>
