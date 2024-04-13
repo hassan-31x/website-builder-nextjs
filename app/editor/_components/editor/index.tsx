@@ -61,7 +61,7 @@ const Editor = ({ liveMode }: Props) => {
 
   return (
     <div
-      className={clsx("use-automation-zoom-in h-full overflow-scroll mr-[385px] bg-background transition-all rounded-md", {
+      className={clsx("use-automation-zoom-in h-full overflow-scroll mr-[385px] bg-background transition-all rounded-md no-scrollbar", {
         "!p-0 !mr-0": state.editor.previewMode === true || state.editor.liveMode === true,
         "!w-[850px]": state.editor.device === "Tablet",
         "!w-[420px]": state.editor.device === "Mobile",
