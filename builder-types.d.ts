@@ -5,12 +5,13 @@ type EditorBtns =
     | "contactForm"
     | "paymentForm"
     | "link"
-    | "2col"
+    | "2Col"
     | "video"
     | "__body"
     | "image"
     | null
     | "3col"
+
 
 type DeviceTypes = "Mobile" | "Tablet" | "Desktop"
 

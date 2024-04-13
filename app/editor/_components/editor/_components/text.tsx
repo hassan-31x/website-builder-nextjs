@@ -1,10 +1,13 @@
 "use client";
-import { Badge } from "@/components/ui/badge";
-import { changeClickedElement, deleteElement, updateElement } from "@/redux/slice/builderSlice";
-import { RootState } from "@/redux/store";
-import clsx from "clsx";
-import { Trash } from "lucide-react";
+
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+
+import { changeClickedElement, deleteElement, updateElement } from "@/redux/slice/builderSlice";
+import clsx from "clsx";
+
+import { Badge } from "@/components/ui/badge";
+import { Trash } from "lucide-react";
 
 type Props = {
   element: EditorElement;
