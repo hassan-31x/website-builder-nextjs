@@ -171,8 +171,8 @@ export const builderSlice = createSlice({
             state.editor.previewMode = !state.editor.previewMode
         },
 
-        toggleLiveMode(state, action?: PayloadAction<{ value: boolean }>) {
-            state.editor.liveMode = action?.payload ? action.payload.value : !state.editor.liveMode
+        toggleLiveMode(state, action: PayloadAction<{ value?: boolean }>) {
+            state.editor.liveMode = action.payload?.value ? action.payload.value : !state.editor.liveMode
         },
 
         redo(state) {
