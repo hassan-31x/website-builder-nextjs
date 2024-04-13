@@ -41,7 +41,7 @@ const TextComponent = (props: Props) => {
       onClick={handleOnClickBody}
     >
       {state.editor.selectedElement.id === props.element.id && !state.editor.liveMode && (
-        <Badge className="absolute -top-[23px] -left-[1px] rounded-none rounded-t-lg bg-white">{state.editor.selectedElement.name}</Badge>
+        <Badge className="absolute -top-[23px] -left-[1px] rounded-none rounded-t-lg">{state.editor.selectedElement.name}</Badge>
       )}
       <span
         contentEditable={!state.editor.liveMode}
@@ -62,7 +62,7 @@ const TextComponent = (props: Props) => {
         {!Array.isArray(props.element.content) && props.element.content.innerText}
       </span>
       {state.editor.selectedElement.id === props.element.id && !state.editor.liveMode && (
-        <div className="absolute bg-primary px-2.5 py-1 text-xs font-bold -top-[25px] -right-[1px] rounded-none rounded-t-lg !text-white bg-black">
+        <div className="absolute bg-primary px-2.5 py-1 text-xs font-bold -top-[25px] -right-[1px] rounded-none rounded-t-lg !text-white">
           <Trash className="cursor-pointer" size={16} onClick={handleDeleteElement} />
         </div>
       )}
