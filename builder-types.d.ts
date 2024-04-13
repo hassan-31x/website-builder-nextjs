@@ -20,7 +20,7 @@ type EditorElement = {
     styles: React.CSSProperties
     name: string
     type: EditorBtns
-    content: EditorElement[] | { href?: string, innerText?: string }
+    content: EditorElement[] | { href?: string, src?: string, innerText?: string }
 }
 
 type Editor = {

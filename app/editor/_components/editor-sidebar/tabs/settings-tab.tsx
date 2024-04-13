@@ -58,8 +58,6 @@ const SettingsTab = (props: Props) => {
                 ...styleObject,
             },
         },
-        
-    
     }))
   }
 
@@ -86,13 +84,13 @@ const SettingsTab = (props: Props) => {
     <Accordion
       type="multiple"
       className="w-full"
-      defaultValue={['Typography', 'Dimensions', 'Decorations', 'Flexbox']}
+      defaultValue={['Properties', 'Typography', 'Dimensions', 'Decorations', 'Flexbox', 'Custom']}
     >
       <AccordionItem
-        value="Custom"
+        value="Properties"
         className="px-6 py-0  "
       >
-        <AccordionTrigger className="!no-underline">Custom</AccordionTrigger>
+        <AccordionTrigger className="!no-underline">Properties</AccordionTrigger>
         <AccordionContent>
           {state.editor.selectedElement.type === 'link' &&
             !Array.isArray(state.editor.selectedElement.content) && (
@@ -100,9 +98,21 @@ const SettingsTab = (props: Props) => {
                 <p className="text-muted-foreground">Link Path</p>
                 <Input
                   id="href"
-                  placeholder="https:domain.example.com/pathname"
+                  placeholder="https://domain.example.com/pathname"
                   onChange={handleChangeCustomValues}
                   value={state.editor.selectedElement.content.href}
+                />
+              </div>
+            )}
+          {state.editor.selectedElement.type === 'video' &&
+            !Array.isArray(state.editor.selectedElement.content) && (
+              <div className="flex flex-col gap-2">
+                <p className="text-muted-foreground">Source</p>
+                <Input
+                  id="src"
+                  placeholder="https:youtube.com/watch?v=videoId"
+                  onChange={handleChangeCustomValues}
+                  value={state.editor.selectedElement.content.src}
                 />
               </div>
             )}
@@ -597,6 +607,26 @@ const SettingsTab = (props: Props) => {
               value={state.editor.selectedElement.styles?.flexDirection}
             />
           </div>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="Custom"
+        className="px-6 py-0  "
+      >
+        <AccordionTrigger className="!no-underline">Custom</AccordionTrigger>
+        <AccordionContent>
+          {state.editor.selectedElement.type === 'link' &&
+            !Array.isArray(state.editor.selectedElement.content) && (
+              <div className="flex flex-col gap-2">
+                <p className="text-muted-foreground">Link Path</p>
+                <Input
+                  id="href"
+                  placeholder="https:domain.example.com/pathname"
+                  onChange={handleChangeCustomValues}
+                  value={state.editor.selectedElement.content.href}
+                />
+              </div>
+            )}
         </AccordionContent>
       </AccordionItem>
     </Accordion>
