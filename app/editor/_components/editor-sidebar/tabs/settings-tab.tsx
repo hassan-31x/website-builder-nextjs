@@ -104,6 +104,18 @@ const SettingsTab = (props: Props) => {
                 />
               </div>
             )}
+          {state.editor.selectedElement.type === 'image' &&
+            !Array.isArray(state.editor.selectedElement.content) && (
+              <div className="flex flex-col gap-2">
+                <p className="text-muted-foreground">Alternate Text</p>
+                <Input
+                  id="alt"
+                  placeholder="Image Description"
+                  onChange={handleChangeCustomValues}
+                  value={state.editor.selectedElement.content.alt}
+                />
+              </div>
+            )}
           {state.editor.selectedElement.type === 'video' &&
             !Array.isArray(state.editor.selectedElement.content) && (
               <div className="flex flex-col gap-2">
